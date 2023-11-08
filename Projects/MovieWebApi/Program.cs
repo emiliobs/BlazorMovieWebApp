@@ -84,12 +84,3 @@ record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
 }
 
 record MovieRecord(int Id, string Title, string Description, string ImageUrl, string Review);
-//  public class MovieRecord
-//     {
-//         public int Id { get; set; }
-//         public string Title { get; set; } = string.Empty;
-//         public string Description { get; set; } = string.Empty;
-//         public string ImageUrl { get; set; } = string.Empty;
-//         public string Review { get; set; } = string.Empty;
-
-//     }

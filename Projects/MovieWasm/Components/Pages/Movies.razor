@@ -1,0 +1,36 @@
+@inject HttpClient Http
+@if(ListMovies is null)
+{
+    <h3>Loading...</h3>
+}
+else
+{
+    @for (int x = 0; x <= ListMovies.Count / 4; x++)
+    {
+        MovieRecord[] movieGroup = ListMovies.Skip(x * 4).Take(4).ToArray();
+
+        <div class="row">
+
+            @foreach (MovieRecord movie in movieGroup)
+            {
+                <MovieItem Movie ="@movie" />
+
+            }
+
+        </div>
+
+    }
+
+}
+
+@code{
+    List<MovieRecord>? ListMovies = null;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await Task.Delay(2000);
+        ListMovies= await Http.GetFromJsonAsync<List<MovieRecord>>("/movies");
+        
+    }
+
+}
